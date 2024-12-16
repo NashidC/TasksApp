@@ -36,6 +36,8 @@ extension ViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
         cell.textLabel?.text = tasks[indexPath.row]
+        print("Success")
         return cell
+        
     }
 }

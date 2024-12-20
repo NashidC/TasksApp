@@ -41,7 +41,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="VqN-tk-EiQ">
-                        <barButtonItem key="rightBarButtonItem" title="Add" id="aVT-Lq-ztO"/>
+                        <barButtonItem key="rightBarButtonItem" title="Add" id="aVT-Lq-ztO">
+                            <connections>
+                                <action selector="didTapAdd" destination="BYZ-38-t0r" id="Jbo-Jg-lha"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="J9N-Td-ijp" id="rt4-Xw-w2p"/>
@@ -73,9 +77,28 @@
                     <view key="view" contentMode="scaleToFill" id="uLo-Hv-d3U">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tTw-rR-hH3">
+                                <rect key="frame" x="20" y="64" width="374" height="52"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="374" id="BaI-fL-khs"/>
+                                    <constraint firstAttribute="height" constant="52" id="tiY-ui-bXm"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="iMh-rU-iaM"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="tTw-rR-hH3" firstAttribute="top" secondItem="iMh-rU-iaM" secondAttribute="top" constant="20" id="Ukh-si-2eS"/>
+                            <constraint firstItem="tTw-rR-hH3" firstAttribute="leading" secondItem="iMh-rU-iaM" secondAttribute="leading" constant="20" id="a6u-OO-asc"/>
+                            <constraint firstItem="iMh-rU-iaM" firstAttribute="trailing" secondItem="tTw-rR-hH3" secondAttribute="trailing" constant="20" id="dOP-S1-QC7"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="field" destination="tTw-rR-hH3" id="w54-dC-UIF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Huy-9e-IC6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

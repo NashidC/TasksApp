@@ -16,17 +16,37 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.title = "Tasks"
+        
         tasks = ["task 1"]
         
+        
+        if !UserDefaults().bool(forKey: "setup"){
+            UserDefaults().set(true, forKey: "setup")
+            UserDefaults().set(0, forKey: "count")
+            
+        }
         //Get all current saved tasks
+        
+        
+        
         tableView.dataSource = self
         tableView.delegate = self
         tableView.reloadData()
+    }
+    
+    func updateTasks() {
+        
     }
 
     @IBAction func didTapAdd() {
         let vc = storyboard?.instantiateViewController(withIdentifier: "entry") as! EntryViewController
         vc.title = "New Task"
+        vc.update = {
+            DispatchQueue.main.async {
+                self.updateTasks()
+            }
+        }
         navigationController?.pushViewController(vc, animated: true)
     }
 

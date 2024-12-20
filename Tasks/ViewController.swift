@@ -20,6 +20,9 @@ class ViewController: UIViewController {
         
         tasks = ["task 1"]
         
+        tableView.dataSource = self
+        tableView.delegate = self
+        
         
         if !UserDefaults().bool(forKey: "setup"){
             UserDefaults().set(true, forKey: "setup")
@@ -27,15 +30,27 @@ class ViewController: UIViewController {
             
         }
         //Get all current saved tasks
+        updateTasks()
         
         
+       
         
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.reloadData()
     }
     
     func updateTasks() {
+        tasks.removeAll()
+        
+        guard let count = UserDefaults().value(forKey: "count") as? Int else {
+              return
+        }
+        for x in 0..<count {
+            
+            if let task = UserDefaults().value(forKey: "task\(x+1)") as? String {
+                tasks.append(task)
+            }
+            
+        }
+        tableView.reloadData()
         
     }
 
@@ -60,7 +75,7 @@ extension ViewController: UITableViewDelegate {
 extension ViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("Number of rows in section: \(tasks.count)")
+        
         return tasks.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

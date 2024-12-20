@@ -40,6 +40,8 @@ class EntryViewController: UIViewController, UITextFieldDelegate {
         let newCount = count + 1
         UserDefaults().set(newCount, forKey: "count")
         UserDefaults().set(text, forKey: "task_\(newCount)")
+        update?()
+        navigationController?.popViewController(animated: true)
         
     }
 

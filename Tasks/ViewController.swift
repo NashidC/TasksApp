@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tasks = []
+        tasks = ["task 1"]
         
         //Get all current saved tasks
         tableView.dataSource = self
@@ -25,7 +25,9 @@ class ViewController: UIViewController {
     }
 
     @IBAction func didTapAdd() {
-        
+        let vc = storyboard?.instantiateViewController(withIdentifier: "entry") as! EntryViewController
+        vc.title = "New Task"
+        navigationController?.pushViewController(vc, animated: true)
     }
 
 }
